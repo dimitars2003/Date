@@ -139,25 +139,25 @@ public class Date {
 	}
 
 	public int checkDate(Date d1) {
-		int sbor = 0;
+		int sum = 0;
 		int i = 0;
 		while (d1.getmonth()-1 > i) {
 			if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 || i == 11) {
-				sbor += 31;
+				sum += 31;
 			}
 			else if (i == 1) {
 				if (d1.leapYear() == 0) {
-					sbor += 29;
+					sum += 29;
 				} else
-					sbor += 28;
+					sum += 28;
 
 			} else
-				sbor += 30;
+				sum += 30;
 			i++;
 		}
-		sbor+=d1.getday();
+		sum+=d1.getday();
 		
-		return (sbor);
+		return (sum);
 	}
 	public int checkWeek(Date d1 ) {
 		int week = 0;
