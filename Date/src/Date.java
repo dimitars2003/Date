@@ -7,7 +7,12 @@ public class Date {
 	private int year;
 	private DayOfWeek dayOfWeek;
 	public Date() {
-
+		second = 0;
+		minute = 0;
+		hour = 0;
+		day = 1;
+		month = 1;
+		year = 1;
 	}
 	
 
@@ -154,7 +159,7 @@ public class Date {
 		
 		return (sbor);
 	}
-	public int checkWeek(Date d1) {
+	public int checkWeek(Date d1 ) {
 		int week = 0;
 		week=checkDate(d1)/7+1;
 		return (week);
