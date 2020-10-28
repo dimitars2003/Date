@@ -5,31 +5,37 @@ public class Test {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner (System.in);
 		int temp = scan.nextInt();
+		System.out.println(DayOfWeek.getName(temp));
+		temp=scan.nextInt();
 		Date d1 = new Date ();
-		d1.setSek(temp);
+		d1.setsecond(temp);
 		temp = scan.nextInt();
-		d1.setMin(temp);
+		d1.setminute(temp);
 		temp = scan.nextInt();
-		d1.setChas(temp);
+		d1.sethour(temp);
 		temp = scan.nextInt();
-		d1.setDen(temp);
+		d1.setday(temp);
 		temp = scan.nextInt();
-		d1.setMes(temp);
+		d1.setmonth(temp);
 		temp = scan.nextInt();
-		d1.setGod(temp);
+		d1.setyear(temp);
+		System.out.println(DayOfWeek.getDayOfWeek(d1.checkDate(d1)%7));
+		System.out.println(DayOfWeek.getDayOfWeek(d1.checkDate(d1)%7).toString(3));
 		temp = scan.nextInt();
 		Date d2 = new Date ();
-		d2.setSek(temp);
+		d2.setsecond(temp);
 		temp = scan.nextInt();
-		d2.setMin(temp);
+		d2.setminute(temp);
 		temp = scan.nextInt();
-		d2.setChas(temp);
+		d2.sethour(temp);
 		temp = scan.nextInt();
-		d2.setDen(temp);
+		d2.setday(temp);
 		temp = scan.nextInt();
-		d2.setMes(temp);
+		d2.setmonth(temp);
 		temp = scan.nextInt();
-		d2.setGod(temp);
+		d2.setyear(temp);
+		System.out.println(DayOfWeek.getDayOfWeek(d2.checkDate(d2)%7));
+		System.out.println(DayOfWeek.getDayOfWeek(d2.checkDate(d2)%7).toString(3));
 		System.out.println(d1.compareTo(d2));
 		if(d1.leapYear()==0) {
 			System.out.println("Leap year");
@@ -41,29 +47,29 @@ public class Test {
 		else System.out.println("Common year");
 		System.out.println(d1.checkDate(d1));
 		System.out.println(d1.checkWeek(d1));
-		d1.addSek(d1);
+		d1.addsecond(d1);
 		int n = scan.nextInt();
 		Date [] dm = new Date [n] ;
 		for (int i = 0; i < n; i++) {
 			dm[i]= new Date ();
 			temp=scan.nextInt();
-			dm[i].setSek(temp);
+			dm[i].setsecond(temp);
 			temp = scan.nextInt();
-			dm[i].setMin(temp);
+			dm[i].setminute(temp);
 			temp = scan.nextInt();
-			dm[i].setChas(temp);
+			dm[i].sethour(temp);
 			temp = scan.nextInt();
-			dm[i].setDen(temp);
+			dm[i].setday(temp);
 			temp = scan.nextInt();
-			dm[i].setMes(temp);
+			dm[i].setmonth(temp);
 			temp = scan.nextInt();
-			dm[i].setGod(temp);
+			dm[i].setyear(temp);
 		}
 		sortDate(dm);
 		for (int i = 0; i < n; i++) {
-			System.out.println(dm[i].getSek()+":"+dm[i].getMin()+":"+dm[i].getChas()+" "+dm[i].getDen()+":"+dm[i].getMes()+":"+dm[i].getGod());
+			dm[i].toString();
 		}
-		scan.close();
+		
 	}
 	public static void sortDate(Date [] d1) {
 		Date temp;

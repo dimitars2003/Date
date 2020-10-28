@@ -1,102 +1,109 @@
 public class Date {
-	private int sek;
-	private int min;
-	private int chas;
-	private int den;
-	private int mes;
-	private int god;
-
+	private int second;
+	private int minute;
+	private int hour;
+	private int day;
+	private int month;
+	private int year;
+	private DayOfWeek dayOfWeek;
 	public Date() {
 
 	}
+	
 
-	public Date(int s, int m, int ch, int d, int ms, int g) {
-		sek = s;
-		min = m;
-		chas = ch;
-		den = d;
-		mes = ms;
-		god = g;
+	public Date(int s, int m, int ch, int d, int ms, int g, DayOfWeek dw) {
+		second = s;
+		minute = m;
+		hour = ch;
+		day = d;
+		month = ms;
+		year = g;
+		dayOfWeek = dw;
 		// popalva vsi4ki poleta
 	}
-
-	public int getSek() {
-		return (sek);
+	
+	public int getsecond() {
+		return (second);
 	}
 
-	public int getMin() {
-		return (min);
+	public int getminute() {
+		return (minute);
 	}
 
-	public int getChas() {
-		return (chas);
+	public int gethour() {
+		return (hour);
 	}
 
-	public int getDen() {
-		return (den);
+	public int getday() {
+		return (day);
 	}
 
-	public int getMes() {
-		return (mes);
+	public int getmonth() {
+		return (month);
 	}
 
-	public int getGod() {
-		return (god);
+	public int getyear() {
+		return (year);
 	}
 
-	public void setSek(int s) {
-		sek = s;
+	public void setsecond(int s) {
+		if(s>=0&&s<60)
+		second = s;
 	}
 
-	public void setMin(int m) {
-		min = m;
+	public void setminute(int m) {
+		if(m>=0&&m<=59)
+		minute = m;
 	}
 
-	public void setDen(int d) {
-		den = d;
+	public void setday(int d) {
+		if(d>0&&d<32)
+		day = d;
 	}
 
-	public void setChas(int ch) {
-		chas = ch;
+	public void sethour(int h) {
+		if(h>=0&&h<24)
+		hour = h;
 	}
 
-	public void setMes(int m) {
-		mes = m;
+	public void setmonth(int m) {
+		if(m>0&&m<13)
+		month = m;
 	}
 
-	public void setGod(int g) {
-		god = g;
+	public void setyear(int y) {
+		year = y;
 	}
 
 	public int compareTo(Date d1) {
-		if (god > d1.getGod()) {
+		if (year > d1.getyear()) {
 			return (-1);
-		} else if (god < d1.getGod()) {
+		} else if (year < d1.getyear()) {
 			return (1);
 		} else {
-			if (mes > d1.getMes()) {
+			if (month > d1.getmonth()) {
 				return (-1);
-			} else if (mes < d1.getMes()) {
+			} else if (month < d1.getmonth()) {
 				return (1);
 			} else {
-				if (den > d1.getDen()) {
+				if (day > d1.getday()) {
 					return (-1);
-				} else if (den < d1.getDen()) {
+				} else if (day < d1.getday()) {
 					return (1);
 				} else {
-					if (chas > d1.getChas()) {
+					if (hour > d1.gethour()) {
 						return (-1);
-					} else if (chas < d1.getChas()) {
+					} else if (hour < d1.gethour()) {
 						return (1);
 					} else {
-						if (min > d1.getMin()) {
+						if (minute > d1.getminute()) {
 							return (-1);
-						} else if (min > d1.getMin()) {
+						} else if (minute > d1.getminute()) {
 							return (1);
 						} else {
-							if (sek > d1.getSek()) {
+							if (second > d1.getsecond()) {
 								return (-1);
-							} else if (sek < d1.getSek()) {
+							} else if (second < d1.getsecond()) {
 								return (1);
 							} else {
 								return (0);
@@ -114,11 +121,11 @@ public class Date {
 
 	public int leapYear() {
 		int check = 0;
-		if (god % 4 != 0) {
+		if (year % 4 != 0) {
 			check++;
-		} else if (god % 100 != 0) {
+		} else if (year % 100 != 0) {
 			return (check);
-		} else if (god % 400 != 0) {
+		} else if (year % 400 != 0) {
 			check++;
 		} else {
 			return (check);
@@ -129,7 +136,7 @@ public class Date {
 	public int checkDate(Date d1) {
 		int sbor = 0;
 		int i = 0;
-		while (d1.getMes()-1 > i) {
+		while (d1.getmonth()-1 > i) {
 			if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 || i == 11) {
 				sbor += 31;
 			}
@@ -143,7 +150,7 @@ public class Date {
 				sbor += 30;
 			i++;
 		}
-		sbor+=d1.getDen();
+		sbor+=d1.getday();
 		
 		return (sbor);
 	}
@@ -152,53 +159,53 @@ public class Date {
 		week=checkDate(d1)/7+1;
 		return (week);
 	}
-	public void addSek(Date d1) {
-		d1.setSek(d1.getSek()+1);
-		if(d1.getSek()>=60) {
-			d1.setSek(d1.getSek()-60);
-			d1.setMin(d1.getMin()+1);
-			if(d1.getMin()>=60) {
-				d1.setMin(d1.getMin()-60);
-				d1.setChas(d1.getChas()+1);
-				if(d1.getChas()>=24) {
-					d1.setChas(d1.getChas()-24);
-					d1.setDen(d1.getDen()+1);
-					if(d1.getDen()>28&&d1.getMes()==2&&d1.leapYear()==1) {
-						d1.setDen(d1.getDen()-28);
-						d1.setMes(d1.getMes()+1);
-						if(d1.getMes()>=12) {
-							d1.setMes(d1.getMes()-12);
-							d1.setGod(d1.getGod()+1);
+	public void addsecond(Date d1) {
+		d1.setsecond(d1.getsecond()+1);
+		if(d1.getsecond()>=60) {
+			d1.setsecond(d1.getsecond()-60);
+			d1.setminute(d1.getminute()+1);
+			if(d1.getminute()>=60) {
+				d1.setminute(d1.getminute()-60);
+				d1.sethour(d1.gethour()+1);
+				if(d1.gethour()>=24) {
+					d1.sethour(d1.gethour()-24);
+					d1.setday(d1.getday()+1);
+					if(d1.getday()>28&&d1.getmonth()==2&&d1.leapYear()==1) {
+						d1.setday(d1.getday()-28);
+						d1.setmonth(d1.getmonth()+1);
+						if(d1.getmonth()>=12) {
+							d1.setmonth(d1.getmonth()-12);
+							d1.setyear(d1.getyear()+1);
 						}
 					}
-					else if(d1.getDen()>29&&d1.getMes()==2&&d1.leapYear()==0) {
-						d1.setDen(d1.getDen()-29);
-						d1.setMes(d1.getMes()+1);
-						if(d1.getMes()>=12) {
-							d1.setMes(d1.getMes()-12);
-							d1.setGod(d1.getGod()+1);
+					else if(d1.getday()>29&&d1.getmonth()==2&&d1.leapYear()==0) {
+						d1.setday(d1.getday()-29);
+						d1.setmonth(d1.getmonth()+1);
+						if(d1.getmonth()>=12) {
+							d1.setmonth(d1.getmonth()-12);
+							d1.setyear(d1.getyear()+1);
 						}
 					}
-					else if(d1.getDen()>30&&(d1.getMes()==4||d1.getMes()==6||d1.getMes()==9||d1.getMes()==11)) {
-						d1.setDen(d1.getDen()-30);
-						d1.setMes(d1.getMes()+1);
-						if(d1.getMes()>=12) {
-							d1.setMes(d1.getMes()-12);
-							d1.setGod(d1.getGod()+1);
+					else if(d1.getday()>30&&(d1.getmonth()==4||d1.getmonth()==6||d1.getmonth()==9||d1.getmonth()==11)) {
+						d1.setday(d1.getday()-30);
+						d1.setmonth(d1.getmonth()+1);
+						if(d1.getmonth()>=12) {
+							d1.setmonth(d1.getmonth()-12);
+							d1.setyear(d1.getyear()+1);
 						}
 					}
-					else if(d1.getDen()>31) {
-						d1.setDen(d1.getDen()-31);
-						d1.setMes(d1.getMes()+1);
-						if(d1.getMes()>=12) {
-							d1.setMes(d1.getMes()-12);
-							d1.setGod(d1.getGod()+1);
+					else if(d1.getday()>31) {
+						d1.setday(d1.getday()-31);
+						d1.setmonth(d1.getmonth()+1);
+						if(d1.getmonth()>=12) {
+							d1.setmonth(d1.getmonth()-12);
+							d1.setyear(d1.getyear()+1);
 						}
 					}
 				}
 			}
 		}
-		System.out.println(d1.getSek()+":"+d1.getMin()+":"+d1.getChas()+" "+d1.getDen()+":"+d1.getMes()+":"+d1.getGod());
+		System.out.println(d1.getsecond()+":"+d1.getminute()+":"+d1.gethour()+" "+d1.getday()+":"+d1.getmonth()+":"+d1.getyear());
 	}
 	
 }
