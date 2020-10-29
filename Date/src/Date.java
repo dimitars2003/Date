@@ -16,7 +16,7 @@ public class Date {
 	}
 	
 
-	public Date(int s, int m, int h, int d, int mo, int y, DayOfWeek dw) {
+	public Date(int s, int m, int h, int d, int mo, int y, DayOfWeek dw) {	
 		if(s>=0&&s<60)
 		second = s;
 		if(m>=0&&m<=59)
@@ -215,7 +215,10 @@ public class Date {
 				}
 			}
 		}
-		System.out.println(d1.getsecond()+":"+d1.getminute()+":"+d1.gethour()+" "+d1.getday()+":"+d1.getmonth()+":"+d1.getyear());
+		System.out.println(d1.toString());
+	}
+	public String toString() {
+		return second+":"+minute+":"+hour+" "+day+" "+month+" "+year;
 	}
 	
 }

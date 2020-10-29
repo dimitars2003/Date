@@ -35,7 +35,7 @@ public enum DayOfWeek {
 		}
 	}
 	public static DayOfWeek getName(int temp) {
-		if(temp==0) {
+			if(temp==0) {
 				return MONDAY;
 			}
 			if(temp==1) {
