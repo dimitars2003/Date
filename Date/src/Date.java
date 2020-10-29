@@ -16,13 +16,18 @@ public class Date {
 	}
 	
 
-	public Date(int s, int m, int ch, int d, int ms, int g, DayOfWeek dw) {
+	public Date(int s, int m, int h, int d, int mo, int y, DayOfWeek dw) {
+		if(s>=0&&s<60)
 		second = s;
+		if(m>=0&&m<=59)
 		minute = m;
-		hour = ch;
+		if(h>=0&&h<24)
+		hour = h;
+		if(d>0&&d<32)
 		day = d;
-		month = ms;
-		year = g;
+		if(mo>0&&mo<13)
+		month = mo;
+		year = y;
 		dayOfWeek = dw;
 		// popalva vsi4ki poleta
 	}
