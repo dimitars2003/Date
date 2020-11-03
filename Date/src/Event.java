@@ -29,7 +29,7 @@ public class Event {
 		this.date = date;
 	}
 	public String toString() {
-		return name + " " + date.toString();
+		return  date.toStringNoSeconds()+ " - " + name;
 	}
 	
 }

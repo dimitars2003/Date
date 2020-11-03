@@ -57,27 +57,27 @@ public class Date {
 	}
 
 	public void setsecond(int s) {
-		if(s>=0&&s<60)
+		
 		second = s;
 	}
 
 	public void setminute(int m) {
-		if(m>=0&&m<=59)
+		
 		minute = m;
 	}
 
 	public void setday(int d) {
-		if(d>0&&d<32)
+		
 		day = d;
 	}
 
 	public void sethour(int h) {
-		if(h>=0&&h<24)
+		
 		hour = h;
 	}
 
 	public void setmonth(int m) {
-		if(m>0&&m<13)
+		
 		month = m;
 	}
 
@@ -124,7 +124,30 @@ public class Date {
 			}
 		}
 	}
-
+	
+	public int compareToJustDate(Date d1) {
+		if (year > d1.getyear()) {
+			return (-1);
+		} else if (year < d1.getyear()) {
+			return (1);
+		} else {
+			if (month > d1.getmonth()) {
+				return (-1);
+			} else if (month < d1.getmonth()) {
+				return (1);
+			} else {
+				if (day > d1.getday()) {
+					return (-1);
+				} else if (day < d1.getday()) {
+					return (1);
+				}  else return (0); 
+						
+					
+				}
+			}
+		}
+	
+	
 	public int checkyear(int a) {
 		return (a);
 	}
@@ -220,5 +243,10 @@ public class Date {
 	public String toString() {
 		return second+":"+minute+":"+hour+" "+day+" "+month+" "+year;
 	}
-	
+	public String toStringNoSeconds() {
+		return day+"."+month+"."+year+", "+hour+ ":" +minute;
+	}
+	public String toStringOnlyDate() {
+		return year+"/"+hour+ "/" +minute;
+	}
 }

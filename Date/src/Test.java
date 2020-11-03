@@ -5,7 +5,7 @@ public class Test {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner (System.in);
 		int temp = scan.nextInt();
-		System.out.println(DayOfWeek.getName(temp));
+		System.out.println(DayOfWeek.getName(temp%7));
 		temp=scan.nextInt();
 		Date d1 = new Date ();
 		d1.setsecond(temp);
