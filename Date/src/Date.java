@@ -247,6 +247,6 @@ public class Date {
 		return day+"."+month+"."+year+", "+hour+ ":" +minute;
 	}
 	public String toStringOnlyDate() {
-		return year+"/"+hour+ "/" +minute;
+		return year+"/"+month+ "/" + day;
 	}
 }
