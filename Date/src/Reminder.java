@@ -1,4 +1,4 @@
-import java.time.format.DateTimeFormatter;  
+ 
 import java.time.LocalDateTime;    
 public class Reminder {
 	private Event [] Events;
@@ -39,15 +39,22 @@ public class Reminder {
 		}
 		return chosenDateEvents;
 	}
-	public void reminder() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
-		   LocalDateTime now = LocalDateTime.now();
-		   for(int i = 0;i<30;i++) {
-			   if(Events[i].getDate().toStringOnlyDate()==dtf.format(now)) {
-				   System.out.println(Events[i].toString());
-			   }
-		   }
-		   
+	public void remind()
+	{
+		LocalDateTime localDateTime = LocalDateTime.now();
+		
+		Date currentDate = new Date();
+		currentDate.setday(localDateTime.getDayOfMonth());
+		currentDate.setmonth(localDateTime.getMonthValue());
+		currentDate.setyear(localDateTime.getYear());
+		Event[] currentEvents = getAllEventsAt(currentDate);
+		
+		for(int i = 0;i<30;i++){
+		
+			System.out.println(currentEvents[i].toString());
+		
+		}
 	}
-	
 }
+	
+

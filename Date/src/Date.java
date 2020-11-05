@@ -246,7 +246,5 @@ public class Date {
 	public String toStringNoSeconds() {
 		return day+"."+month+"."+year+", "+hour+ ":" +minute;
 	}
-	public String toStringOnlyDate() {
-		return year+"/"+month+ "/" + day;
-	}
+	
 }
