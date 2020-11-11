@@ -16,7 +16,7 @@ public class Date {
 	}
 	
 
-	public Date(int s, int m, int h, int d, int mo, int y, DayOfWeek dw) {	
+	public Date(int s, int m, int h, int d, int mo, int y) {	
 		if(s>=0&&s<60)
 		second = s;
 		if(m>=0&&m<=59)
@@ -28,7 +28,7 @@ public class Date {
 		if(mo>0&&mo<13)
 		month = mo;
 		year = y;
-		dayOfWeek = dw;
+		
 		// popalva vsi4ki poleta
 	}
 	
@@ -245,6 +245,16 @@ public class Date {
 	}
 	public String toStringNoSeconds() {
 		return day+"."+month+"."+year+", "+hour+ ":" +minute;
+	}
+
+
+	public DayOfWeek getDayOfWeek() {
+		return dayOfWeek;
+	}
+
+
+	public void setDayOfWeek(DayOfWeek dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
 	}
 	
 }

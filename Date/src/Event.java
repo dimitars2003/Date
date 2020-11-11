@@ -8,6 +8,7 @@ public class Event {
 		date= new Date();
 		
 	}
+	
 	public Event (String n, Date d) {
 		if(n!=null&&!n.isEmpty())
 		name = n;

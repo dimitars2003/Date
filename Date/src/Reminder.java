@@ -8,6 +8,7 @@ public class Reminder {
 		Events = new Event [30];
 		index = 0;
 	}
+	
 	public void addEvent(Event newEvent) {
 		if(newEvent == null) {
 			System.out.println("Error, event is null");
@@ -16,27 +17,41 @@ public class Reminder {
 			System.out.println("Error, Events is full");
 		}
 		else {
+			
 			Events[index] = newEvent;
+			
 			index++;
+			
 		}
 		
 	}
 	public Event[] getAllEventsAt(Date date) {
-		
+		Date temp;
 		int sizeOfDateEvents = 0;
-		for (int i = 0; i<30;i++) {
-			if(date.compareToJustDate(Events[i].getDate())==0){
+		for (int i = 0; i<this.index;i++) {
+			
+			temp=Events[i].getDate();
+			if(date.getday()==temp.getday()){
 				sizeOfDateEvents++;
 			}
 		}
+		int j = 0;
 		Event [] chosenDateEvents = new Event[sizeOfDateEvents];
-		for (int i = 0; i<30;i++) {
-			if(date.compareToJustDate(Events[i].getDate())==0){
-				chosenDateEvents[sizeOfDateEvents].setDate(Events[i].getDate());
-				chosenDateEvents[sizeOfDateEvents].setName(Events[i].getName());
-				sizeOfDateEvents--;
+		
+		for (int i = 0; i<this.index;i++) {
+			temp=Events[i].getDate();
+			if(date.getday()==temp.getday()){
+				chosenDateEvents[j] = new Event (); 
+				chosenDateEvents[j].setDate(Events[i].getDate());
+				chosenDateEvents[j].setName(Events[i].getName());
+				
+				j++;
+				
 			}
+			
 		}
+		//for(int p = 0;p<chosenDateEvents.length;p++) {
+		
 		return chosenDateEvents;
 	}
 	public void remind()
@@ -49,7 +64,7 @@ public class Reminder {
 		currentDate.setyear(localDateTime.getYear());
 		Event[] currentEvents = getAllEventsAt(currentDate);
 		
-		for(int i = 0;i<30;i++){
+		for(int i = 0;i<index;i++){
 		
 			System.out.println(currentEvents[i].toString());
 		
